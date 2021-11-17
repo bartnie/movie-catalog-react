@@ -15,9 +15,10 @@ export const useMovieFetch = movieId => {
     if(sessionState) {
       console.log('Getting data from sessionStorage')
       setState(sessionState);
+      setLoading(true);
+      setError(false);
       return;
     }
-
 
     const fetchMovie = async () => {
       try {

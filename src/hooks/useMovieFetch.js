@@ -16,7 +16,6 @@ export const useMovieFetch = movieId => {
       console.log('Getting data from sessionStorage')
       setState(sessionState);
       setLoading(false);
-      setError(false);
       return;
     }
 
@@ -45,11 +44,11 @@ export const useMovieFetch = movieId => {
       }
     };
     fetchMovie();
-  }, [movieId]);
+  }, [MOVIE_STATE_KEY, movieId]);
 
   useEffect(() => {
     sessionStorage.setItem(MOVIE_STATE_KEY, JSON.stringify(state))
-  }, [movieId, state]);
+  }, [MOVIE_STATE_KEY, state]);
 
   return { state, loading, error };
 }
